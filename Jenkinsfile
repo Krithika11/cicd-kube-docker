@@ -79,6 +79,7 @@ pipeline {
 
               }
             }
+        }
 
         stage('Upload Image') {
             steps {
@@ -89,6 +90,7 @@ pipeline {
                 }
               }
             }
+        }
 
         stage('Remove nused docker image') {
             steps {
@@ -101,16 +103,7 @@ pipeline {
                 steps {
                     sh "Helm upgrade --install --force vprofile-stack helm/vprofilecharts --set appimage=${registry}:V${BUILD-NUMBER} --namespace prod"
                 }
-            }
-
-
-
-        }
-
-
         }
 
     }
-
-
 }
